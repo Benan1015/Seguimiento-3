@@ -1,0 +1,47 @@
+/* Variables de color según plantilla de clase */
+:root {
+    --color-principal: #c82333;
+    --color-secundario: #a71d2a;
+    --fondo-suave: #f8f9fa;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--fondo-suave);
+    color: #333;
+}
+
+/* Efectos visuales en tarjetas */
+.card-platillo {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-platillo:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+.card-img-top {
+    height: 180px;
+    object-fit: cover;
+}
+
+/* Estilo personalizado de botón */
+.btn-custom {
+    background-color: var(--color-principal);
+    color: #ffffff;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-custom:hover {
+    background-color: var(--color-secundario);
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .header-banner {
+        text-align: center;
+    }
+}

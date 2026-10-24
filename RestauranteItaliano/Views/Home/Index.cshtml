@@ -1,8 +1,102 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Ristorante La Bella Italia";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- Navegación con Navbar de Bootstrap -->
+<nav class="navbar navbar-expand-md bg-dark" data-bs-theme="dark">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">La Bella Italia</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link active" href="#inicio">Inicio</a>
+                <a class="nav-link" href="#menu">Menú</a>
+                <a class="nav-link" href="#pedido">Mi Pedido</a>
+                <a class="nav-link text-danger fw-semibold" asp-controller="Home" asp-action="Reserva">Reservaciones</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Encabezado / Banner -->
+<header id="inicio" class="bg-danger text-white text-center py-5 header-banner">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Ristorante La Bella Italia</h1>
+        <p class="lead mb-0">Auténtica tradición culinaria, ingredientes frescos y sabor italiano.</p>
+    </div>
+</header>
+
+<main class="container py-5">
+
+    <div class="alert alert-success text-center shadow-sm" role="alert">
+        ¡Agrega tus platillos al pedido interactivo y calcula tu cuenta en tiempo real!
+    </div>
+
+    <!-- Menú de Platillos -->
+    <section id="menu" class="my-5">
+        <h2 class="text-center mb-4">Nuestros Platillos</h2>
+
+        <!-- Controles de filtrado -->
+        <div class="row g-3 mb-4">
+            <div class="col-12 col-md-6">
+                <input type="text" id="inputBuscador" class="form-control" placeholder="Buscar platillo por nombre...">
+            </div>
+            <div class="col-12 col-md-6">
+                <select id="selectCategoria" class="form-select">
+                    <option value="todos">Todas las categorías</option>
+                    <option value="pastas">Pastas</option>
+                    <option value="pizzas">Pizzas</option>
+                    <option value="postres">Postres</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Contenedor dinámico de Tarjetas -->
+        <div class="row g-4" id="contenedorTarjetas"></div>
+    </section>
+
+    <!-- Tabla dinámica del Pedido -->
+    <section id="pedido" class="my-5">
+        <h2 class="mb-4">Resumen de tu Pedido</h2>
+
+        <div class="card shadow-sm">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover mb-0 align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Platillo</th>
+                                <th>Categoría</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaPedido">
+                            <tr>
+                                <td colspan="3" class="text-center text-muted py-4">No has añadido productos a tu pedido.</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="table-light fw-bold">
+                                <td colspan="2" class="text-end fs-5">Total:</td>
+                                <td id="precioTotal" class="text-danger fs-5">$0 COP</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer bg-white text-end py-3">
+                <button id="btnVaciar" class="btn btn-outline-danger btn-sm">Vaciar Pedido</button>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="bg-dark text-white text-center py-3">
+    <p class="mb-0">Programación Web - Ristorante La Bella Italia</p>
+</footer>
+
+<!-- Carga del Script de JavaScript para el funcionamiento dinámico del menú -->
+<script src="~/js/script.js"></script>
