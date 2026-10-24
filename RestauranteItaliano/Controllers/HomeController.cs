@@ -1,24 +1,38 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using RestauranteItaliano.Models;
 
-namespace RestauranteItaliano.Controllers;
-
-public class HomeController : Controller
+namespace RestauranteItaliano.Controllers
 {
-    public IActionResult Index()
+    public class HomeController : Controller
     {
-        return View();
-    }
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+        public IActionResult Privacy()
+        {
+            return View();
+        }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        // ACCIÓN GET: Muestra el formulario vacío al usuario
+        [HttpGet]
+        public IActionResult Reserva()
+        {
+            return View();
+        }
+
+        // ACCIÓN POST: Recibe y procesa los datos del formulario en C#
+        [HttpPost]
+        public IActionResult Reserva(Reserva modeloReserva)
+        {
+            if (ModelState.IsValid)
+            {
+                // Mensaje procesado en el servidor que se envía a la vista
+                ViewBag.MensajeExito = $"¡Reserva confirmada con éxito para {modeloReserva.NombreCliente} en la zona {modeloReserva.Zona}!";
+            }
+
+            return View(modeloReserva);
+        }
     }
 }
