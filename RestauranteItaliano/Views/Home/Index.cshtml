@@ -2,24 +2,6 @@
     ViewData["Title"] = "Ristorante La Bella Italia";
 }
 
-<!-- Navegación con Navbar de Bootstrap -->
-<nav class="navbar navbar-expand-md bg-dark" data-bs-theme="dark">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="#">La Bella Italia</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="menuPrincipal">
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link active" href="#inicio">Inicio</a>
-                <a class="nav-link" href="#menu">Menú</a>
-                <a class="nav-link" href="#pedido">Mi Pedido</a>
-                <a class="nav-link text-danger fw-semibold" asp-controller="Home" asp-action="Reserva">Reservaciones</a>
-            </div>
-        </div>
-    </div>
-</nav>
-
 <!-- Encabezado / Banner -->
 <header id="inicio" class="bg-danger text-white text-center py-5 header-banner">
     <div class="container">
