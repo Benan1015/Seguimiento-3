@@ -1,0 +1,44 @@
+@model RestauranteItaliano.Models.Platillo
+
+@{
+    ViewData["Title"] = "Crear Platillo";
+}
+
+<div class="container py-4">
+    <h2 class="text-danger fw-bold mb-3">Agregar Nuevo Platillo</h2>
+
+    <form asp-action="Create" method="post" class="card p-4 shadow-sm">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <div class="mb-3">
+            <label asp-for="Nombre" class="form-label"></label>
+            <input asp-for="Nombre" class="form-control" placeholder="Ej. Fettuccine Alfredo" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+
+        <!-- Lista desplegable (select) para seleccionar la categoría relacionada -->
+        <div class="mb-3">
+            <label asp-for="CategoriaId" class="form-label"></label>
+            <select asp-for="CategoriaId" asp-items="ViewBag.CategoriaId" class="form-select">
+                <option value="">-- Seleccione una categoría --</option>
+            </select>
+            <span asp-validation-for="CategoriaId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Precio" class="form-label"></label>
+            <input asp-for="Precio" type="number" step="100" class="form-control" />
+            <span asp-validation-for="Precio" class="text-danger"></span>
+        </div>
+
+        <div class="form-check mb-3">
+            <input asp-for="Disponible" class="form-check-input" />
+            <label asp-for="Disponible" class="form-check-label"></label>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-danger">Guardar</button>
+            <a asp-action="Index" class="btn btn-secondary">Volver</a>
+        </div>
+    </form>
+</div>
