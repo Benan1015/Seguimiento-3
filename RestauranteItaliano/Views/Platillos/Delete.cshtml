@@ -1,0 +1,26 @@
+@model RestauranteItaliano.Models.Platillo
+
+@{
+    ViewData["Title"] = "Eliminar Platillo";
+}
+
+<h2>Eliminar Platillo</h2>
+<h4>¿Estás seguro de que deseas eliminar este platillo?</h4>
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-2">Nombre</dt>
+    <dd class="col-sm-10">@Model.Nombre</dd>
+
+    <dt class="col-sm-2">Precio</dt>
+    <dd class="col-sm-10">@Model.Precio</dd>
+
+    <dt class="col-sm-2">Categoría</dt>
+    <dd class="col-sm-10">@Model.Categoria?.Nombre</dd>
+</dl>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Confirmar Eliminación</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
